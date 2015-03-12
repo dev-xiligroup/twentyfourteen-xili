@@ -22,9 +22,10 @@ get_header(); ?>
 				<?php
 					// Show an optional term description.
 					//$term_description = term_description();
-					$category_description = trim( strip_tags( term_description() ) );
-					if ( ! empty( $category_description ) ):
-						printf( '<div class="taxonomy-description"><p>%s</p></div>', translate ( $category_description, 'twentyfourteen' ) );
+					// 1.3.0 by xili
+					preg_match('/<p>(.*)<\/p>/', term_description(), $match);
+					if ( isset($match[1]) ) :
+						printf( '<div class="taxonomy-description"><p>%s</p></div>', translate ( $match[1], 'twentyfourteen' ) );
 					endif;
 				?>
 			</header><!-- .archive-header -->

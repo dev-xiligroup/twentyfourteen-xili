@@ -11,8 +11,9 @@
 // 1.1.1 - 2014-06-09 - need XL 2.13 - WP 3.9.1 - fixes if xl is inactive
 // 1.1.2 - 2014-07-24 - need XL 2.15 -
 // 1.2.0 - 2014-11-30 - need XL 2.15.3 -
+// 1.3.0 - 2015-03-12 - need XL 2.16.3 - 2014 - 1.3
 
-define( 'TWENTYFOURTEEN_XILI_VER', '1.2.0'); // as parent style.css
+define( 'TWENTYFOURTEEN_XILI_VER', '1.3.0'); // as parent style.css
 
 // main initialisation functions and version testing and message
 
@@ -20,7 +21,7 @@ function twentyfourteen_xilidev_setup () {
 
 	$theme_domain = 'twentyfourteen';
 
-	$minimum_xl_version = '2.14.9';
+	$minimum_xl_version = '2.15.9';
 
 	load_theme_textdomain( $theme_domain, get_stylesheet_directory() . '/langs' ); // now use .mo of child
 
@@ -145,10 +146,14 @@ function twentyfourteen_xilidev_setup () {
 		add_action( 'admin_notices', $c = create_function( '', 'echo "' . addcslashes( $msg, '"' ) . '";' ) );
 
 	// end errors...
+	add_action( 'widgets_init', 'twentyfifteen_xili_add_widgets' );
 
 }
 add_action( 'after_setup_theme', 'twentyfourteen_xilidev_setup', 11 );
 
+function twentyfifteen_xili_add_widgets () {
+	register_widget( 'xili_Widget_Categories' );
+}
 
 function twentyfourteen_xilidev_setup_featured () {
 	remove_theme_support( 'featured-content' );
@@ -493,6 +498,49 @@ function add_script_in_footer(){
 }
 add_action('wp_footer', 'add_script_in_footer');
 
+/**
+ * SHORTCODE LINKPOST - example
+ *
+ * Example with content: [linkpost lang="fr_FR"]vers ce post en français[/linkpost], with no content: arrow by default
+ *
+ * @since 2010 - updated 2014
+ *
+ */
+function xiliml_build_linked_posts_shortcode( $atts, $content=null ) {
+	global $post;
+	$otherpost = false;
+	$output = '';
+	$arr_result = shortcode_atts(
+		array(	'lang'=>'',
+				'title'=>'')
+		, $atts);
+
+	$language = xiliml_get_language( $arr_result['lang'] ); /* test if lang is available */
+
+	if ( $language !== false ) {
+		$otherpost = get_post_meta($post->ID, 'lang-'.$language->slug, true);
+	}
+
+	if (!$content) $content = '&rarr;'; // if shortcode don't have content !!
+
+	if ( $otherpost ) {
+		if ('' == $arr_result['title']) {
+			$obj_lang = xiliml_get_lang_object_of_post( $otherpost );
+			if ( false !== $obj_lang ) {
+				$description = $obj_lang->description;
+				$title = __( 'A similar post in', 'twentyfourteen').' ' . $description; // adapt the domain to your theme
+			} else {
+				$title = __( 'Error with target post #', 'twentyfourteen') . $otherpost;
+			}
+		}
+		$output = '<a href="' . get_permalink( $otherpost ).'" title="' . $arr_result['title'] . '">'. $content . '</a>';
+		/* this link above can be enriched by image or flag */
+	} else {
+		$output = '<a href="#" title="' . __('Error: other post not present !!!', 'xili-language' ) . '">' . $content . '</a>';
+	}
+	return $output;
+}
+add_shortcode( 'linkpost', 'xiliml_build_linked_posts_shortcode');
 
 
 ?>

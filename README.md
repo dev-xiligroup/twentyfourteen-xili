@@ -5,7 +5,7 @@ Multilingual child theme of bundled twenty fourteen theme in WordPress install k
 
 This folder contains sources of a multilingual child themes of bundled (embedded) themes of WordPress install.
 
-The twentyfourteen-xili (v. 1.2) is visible at http://2014.extend.xiligroup.org
+The twentyfourteen-xili (v. 1.3) is visible at http://2014.extend.xiligroup.org
 
 
 ## Prerequisites:
@@ -18,4 +18,8 @@ The twentyfourteen-xili (v. 1.2) is visible at http://2014.extend.xiligroup.org
 1. After decompressing "master" .zip from Github, only upload the folder twentyfourteen-xili (near the readme.md) to themes folder , the child-theme files expect to be finally in `wp-content/themes/twentyfourteen-xili/`!
 1. Before updating, don’t forget to backup your own `.mo` language files
 
-2015-03-01
+## Change Log
+1. v. 1.3 - 2015-03-12 - fixes archive / category subtitle (description)
+
+
+2015-03-12
