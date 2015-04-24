@@ -2,13 +2,14 @@
 // new ephemera multilingual
 // version cloned and adapted from 3.9 - no more transcient
 // 2014-04-27 - ready to be shipped
+// 2015-04-24 - WP 4.2 Powell
 
 /**
  * Custom Widget for displaying specific post formats
  *
  * Displays posts from Aside, Quote, Video, Audio, Image, Gallery, and Link formats.
  *
- * @link http://codex.wordpress.org/Widgets_API#Developing_Widgets
+ * @link https://codex.wordpress.org/Widgets_API#Developing_Widgets
  *
  * @package WordPress
  * @subpackage Twenty_Fourteen
@@ -155,7 +156,7 @@ class Twenty_Fourteen_xili_Ephemera_Widget extends WP_Widget {
 			echo $args['before_widget'];
 			?>
 			<h1 class="widget-title <?php echo esc_attr( $format ); ?>">
-				<a class="entry-format" href="<?php echo esc_url( get_post_format_link( $format ) ); ?>"><?php echo $title; ?></a>
+				<a class="entry-format" href="<?php echo esc_url( get_post_format_link( $format ) ); ?>"><?php echo esc_html( $title ); ?></a>
 			</h1>
 			<ol>
 
@@ -197,7 +198,7 @@ class Twenty_Fourteen_xili_Ephemera_Widget extends WP_Widget {
 									if ( has_post_thumbnail() ) :
 										$post_thumbnail = get_the_post_thumbnail();
 									elseif ( $total_images > 0 ) :
-										$image          = array_shift( $images );
+										$image          = reset( $images );
 										$post_thumbnail = wp_get_attachment_image( $image, 'post-thumbnail' );
 									endif;
 
@@ -312,7 +313,7 @@ class Twenty_Fourteen_xili_Ephemera_Widget extends WP_Widget {
 			<p><label for="<?php echo esc_attr( $this->get_field_id( 'format' ) ); ?>"><?php _e( 'Post format to show:', 'twentyfourteen' ); ?></label>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'format' ) ); ?>" class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'format' ) ); ?>">
 				<?php foreach ( $this->formats as $slug ) : ?>
-				<option value="<?php echo esc_attr( $slug ); ?>"<?php selected( $format, $slug ); ?>><?php echo get_post_format_string( $slug ); ?></option>
+				<option value="<?php echo esc_attr( $slug ); ?>"<?php selected( $format, $slug ); ?>><?php echo esc_html( get_post_format_string( $slug ) ); ?></option>
 				<?php endforeach; ?>
 			</select>
 			<?php if (class_exists('xili_language')) {
@@ -333,7 +334,7 @@ class Twenty_Fourteen_xili_Ephemera_Widget extends WP_Widget {
 						</option>
 						<?php $listlanguages = get_terms_of_groups_lite ($xili_language->langs_group_id,TAXOLANGSGROUP,TAXONAME,'ASC');
 							foreach ($listlanguages as $language) { ?>
-							<option value="<?php echo $language->slug ?>"<?php selected( $the_lang, $language->slug ); ?>><?php echo translate($language->description,'xili-language-widget'); ?></option>
+							<option value="<?php echo $language->slug ?>"<?php selected( $the_lang, $language->slug ); ?>><?php echo esc_html(translate($language->description,'xili-language-widget')); ?></option>
 
 							<?php } /* end */
 						?>
