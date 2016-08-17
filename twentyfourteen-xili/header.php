@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Fourteen
- * @since Twenty Fourteen 1.0 - 3.9
+ * @since Twenty Fourteen 1.0
  */
 ?><!DOCTYPE html>
 <!--[if IE 7]>
@@ -15,7 +15,7 @@
 <!--[if IE 8]>
 <html class="ie ie8" <?php language_attributes(); ?>>
 <![endif]-->
-<!--[if !(IE 7) | !(IE 8)]><!-->
+<!--[if !(IE 7) & !(IE 8)]><!-->
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>

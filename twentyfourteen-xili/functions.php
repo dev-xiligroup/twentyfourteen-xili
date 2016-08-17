@@ -13,8 +13,9 @@
 // 1.2.0 - 2014-11-30 - need XL 2.15.3 -
 // 1.3.0 - 2015-03-12 - need XL 2.16.3 - 2014 - 1.3
 // 1.4.0 - 2015-04-24 - need XL 2.17.0 - 2014 - 1.4
+// 1.8.0 - 2016-08-17 - need XL 2.21.0 - 2014 - 1.8
 
-define( 'TWENTYFOURTEEN_XILI_VER', '1.4.0'); // as parent style.css
+define( 'TWENTYFOURTEEN_XILI_VER', '1.8.0'); // as parent style.css
 
 // main initialisation functions and version testing and message
 
@@ -22,7 +23,7 @@ function twentyfourteen_xilidev_setup () {
 
 	$theme_domain = 'twentyfourteen';
 
-	$minimum_xl_version = '2.15.9';
+	$minimum_xl_version = '2.21.0';
 
 	load_theme_textdomain( $theme_domain, get_stylesheet_directory() . '/langs' ); // now use .mo of child
 
