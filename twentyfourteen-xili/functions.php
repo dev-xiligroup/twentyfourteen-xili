@@ -14,8 +14,9 @@
 // 1.3.0 - 2015-03-12 - need XL 2.16.3 - 2014 - 1.3
 // 1.4.0 - 2015-04-24 - need XL 2.17.0 - 2014 - 1.4
 // 1.8.0 - 2016-08-17 - need XL 2.21.0 - 2014 - 1.8
+// 2.0.0 - 2017-06-21 - need XL 2.22.x - 2014 - 2.0
 
-define( 'TWENTYFOURTEEN_XILI_VER', '1.8.0'); // as parent style.css
+define( 'TWENTYFOURTEEN_XILI_VER', '2.0.0'); // as parent style.css
 
 // main initialisation functions and version testing and message
 
@@ -23,7 +24,7 @@ function twentyfourteen_xilidev_setup () {
 
 	$theme_domain = 'twentyfourteen';
 
-	$minimum_xl_version = '2.21.0';
+	$minimum_xl_version = '2.22.0';
 
 	load_theme_textdomain( $theme_domain, get_stylesheet_directory() . '/langs' ); // now use .mo of child
 
@@ -109,11 +110,7 @@ function twentyfourteen_xilidev_setup () {
 		); //
 
 		if ( $class_ok ) {
-			$xili_theme_options = get_theme_xili_options() ;
-			// to collect checked value in xili-options of theme
-			if ( file_exists( $xili_functionsfolder . '/multilingual-permalinks.php') && $xili_language->is_permalink && isset( $xili_theme_options['perma_ok'] ) && $xili_theme_options['perma_ok']) {
-				require_once ( $xili_functionsfolder . '/multilingual-permalinks.php' ); // require subscribing premium services
-			}
+
 			if ( $xl_required_version ) { // msg choice is inside class
 				$msg = $xili_language_theme_options->child_installation_msg( $xl_required_version, $minimum_xl_version, $class_ok );
 			} else {
