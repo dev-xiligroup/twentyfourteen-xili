@@ -5,7 +5,7 @@ Multilingual child theme of bundled twenty fourteen theme in WordPress install k
 
 This folder contains sources of a multilingual child themes of bundled (embedded) themes of WordPress install.
 
-The twentyfourteen-xili (v. 1.8) is visible at http://2014.extend.xiligroup.org
+The twentyfourteen-xili (v. 2.0) is visible at http://2014.extend.xiligroup.org
 
 
 ## Prerequisites:
@@ -23,5 +23,6 @@ The twentyfourteen-xili (v. 1.8) is visible at http://2014.extend.xiligroup.org
 1. v. 1.4 - 2015-04-24 - WordPress 4.2 Powell (and 2014 - 1.4)
 1. v. 1.5 - 2015-08-28 - WordPress 4.3 Billie (and 2014 - 1.5)
 1. v. 1.8 - 2016-08-17 - WordPress 4.6 Pepper (and 2014 - 1.8)
+1. v. 2.0 - 2017-06-23 - WordPress 4.8 Evans (and 2014 - 2.0)
 
-2016-08-17
+2017-06-26
