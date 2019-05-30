@@ -15,7 +15,7 @@
 // 1.4.0 - 2015-04-24 - need XL 2.17.0 - 2014 - 1.4
 // 1.8.0 - 2016-08-17 - need XL 2.21.0 - 2014 - 1.8
 // 2.0.0 - 2017-06-21 - need XL 2.22.x - 2014 - 2.0
-// 2.7.0 - 2019-05-22 - need XL 2.23.x - 2014 - 2.7
+// 2.7.0 - 2019-05-22 - need XL 2.23.x - 2014 v. 2.7
 
 define( 'TWENTYFOURTEEN_XILI_VER', '2.7' ); // as parent style.css - version ml comparaison
 
@@ -429,7 +429,7 @@ function twentyfourteen_xili_credits() {
 	printf( esc_html__( 'Multilingual child theme of Twenty Fourteen by %s', 'twentyfourteen' ), '<a href="http://dev.xiligroup.com">dev.xiligroup</a> - ' );
 }
 
-add_action('twentyfourteen_credits', 'twentyfourteen_xili_credits' );
+add_action( 'twentyfourteen_credits', 'twentyfourteen_xili_credits' );
 
 /* comment filter to unable link manager */
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
